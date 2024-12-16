@@ -8,7 +8,6 @@ import {
 } from "react";
 
 const DataContext = createContext({});
-
 export const api = {
   loadData: async () => {
     const json = await fetch("/events.json");
@@ -21,16 +20,14 @@ export const DataProvider = ({ children }) => {
   const [data, setData] = useState(null);
   const getData = useCallback(async () => {
     try {
-      const fetchedData = await api.loadData();
-      setData(fetchedData);
+      setData(await api.loadData());
     } catch (err) {
       setError(err);
     }
   }, []);
   useEffect(() => {
-    if (!data) {
-      getData();
-    }
+    if (data) return;
+    getData();
   });
 
   return (
