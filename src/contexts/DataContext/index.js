@@ -21,16 +21,18 @@ export const DataProvider = ({ children }) => {
   const [data, setData] = useState(null);
   const getData = useCallback(async () => {
     try {
-      setData(await api.loadData());
+      const fetchedData = await api.loadData();
+      setData(fetchedData);
     } catch (err) {
       setError(err);
     }
   }, []);
   useEffect(() => {
-    if (data) return;
-    getData();
+    if (!data) {
+      getData();
+    }
   });
-  
+
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -46,7 +48,7 @@ export const DataProvider = ({ children }) => {
 
 DataProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export const useData = () => useContext(DataContext);
 
