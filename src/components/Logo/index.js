@@ -41,7 +41,7 @@ const Logo = ({ size }) => (
           fontFamily: "Kalimati",
           fontSize: "39px",
           fontWeight: 700,
-          whiteWpace: "pre",
+          whiteSpace: "pre",
         }}
         x="-1.125"
         y="44.995"
