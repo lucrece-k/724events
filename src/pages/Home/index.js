@@ -116,11 +116,9 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           <EventCard
-            imageSrc={
-              last?.cover || "/images/amy-hirschi-b3AYk8HKCl0-unsplash1.png"
-            }
-            title={last?.title || "Titre"}
-            date={last?.date ? new Date(last.date) : new Date()}
+            imageSrc={last?.cover}
+            title={last?.title}
+            date={new Date(last?.date)}
             small
             label="boom"
           />
